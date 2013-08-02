@@ -26,7 +26,7 @@
 
 <?php else:  ?>
 <div id="accordion"> 
-<?php $emails = gmail_today(gmail_connect($_POST['username'], $_POST['password'])); ?>
+<?php $emails = gmail_today($inbox = gmail_connect($_POST['username'], $_POST['password'])); ?>
 
 <?php if(!$emails): ?> 
 	<h1>No Emails Today!</h3> 
