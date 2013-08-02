@@ -77,7 +77,7 @@ div.body {
 			
 			/* get information specific to this email */
 			$overview = imap_fetch_overview($inbox,$email_number,0);
-			$message = imap_fetchbody($inbox,$email_number,2);
+			$message = imap_fetchbody($inbox,$email_number,1);
 			
 			/* output the email header information */
 			$output.= '<div class="toggler '.($overview[0]->seen ? 'read' : 'unread').'">';
