@@ -86,11 +86,13 @@ div.body {
 			$output.= '<span class="date">on '.$overview[0]->date.'</span>';
 			$output.= '</div>';
 			
+			echo $output;
+			
 			/* output the email body */
-			$output.= '<div class="body">'.$message.'</div>';
+			echo '<div class="body">';
+			imap_qprint($message);
+			echo '</div>';
 		}
-		
-		echo $output;
 	} 
 	
 	/* close the connection */
