@@ -88,7 +88,7 @@ div.body {
 			    $body = imap_fetchbody($imap, $i, 2);
 			}
 			
-			$body = trim(substr(quoted_printable_decode($body), 0, 100));
+			$body = trim(substr(quoted_printable_decode($body), 0, 1000));
 
 			
 			/* output the email header information */
@@ -99,7 +99,7 @@ div.body {
 			$output.= '</div>';
 			
 		        
-		        $output.= '<div id="body">'.quoted_printable_decode($body)).'</div>';
+		        $output.= '<div id="body">'.$body.'</div>';
         
 			
 		}
