@@ -14,10 +14,10 @@ function gmail_today($inbox) {
 function gmail_read($inbox, $email_number) {
 	$overview = imap_fetch_overview($inbox,$email_number,0);
 
-	$body = imap_fetchbody($inbox, $email_number, 1.1);
+	$body = imap_fetchbody($inbox, $email_number, 1);
 
 	if (!$body) {
-	    $body = imap_fetchbody($inbox, $email_number, 1);
+	    $body = imap_fetchbody($inbox, $email_number, 1.1);
 	}
 			
 	if (!$body) {
