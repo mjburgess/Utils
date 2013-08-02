@@ -77,7 +77,7 @@ div.body {
 			
 			/* get information specific to this email */
 			$overview = imap_fetch_overview($inbox,$email_number,0);
-			$message = imap_fetchbody($inbox,$email_number,1);
+			$message = imap_fetchbody($inbox,$email_number,2);
 			
 			/* output the email header information */
 			$output.= '<div class="toggler '.($overview[0]->seen ? 'read' : 'unread').'">';
@@ -85,14 +85,25 @@ div.body {
 			$output.= '<span class="from">'.$overview[0]->from.'</span>';
 			$output.= '<span class="date">on '.$overview[0]->date.'</span>';
 			$output.= '</div>';
-			
-			echo $output;
-			
+						
 			/* output the email body */
-			echo '<div class="body">';
-			imap_qprint($message);
-			echo '</div>';
+			 $dom = new DOMDocument();
+		        libxml_use_internal_errors(true);
+		        $dom->loadHTML(quoted_printable_decode($message));
+		        $body = $dom->getElementsByTagName("body")->item(0);
+		        
+		        if ($body !== null) {
+		            for ($n = $body->firstChild; $n !== null; $n = $n->nextSibling) {
+		                $body = simplexml_import_dom($n)->asXML();
+		            }
+		        }
+		        
+		        $output.= '<div id="body">'.$body.'</div>';
+        
+			
 		}
+		
+		echo $output;
 	} 
 	
 	/* close the connection */
