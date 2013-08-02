@@ -62,7 +62,7 @@ div.body {
 	$inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
 	
 	/* grab emails */
-	$emails = imap_search($inbox,'UNSEEN');
+	$emails = imap_search($inbox, 'ON "' . date ('d M Y') . '"');
 	
 	/* if emails are returned, cycle through each... */
 	if($emails) {
