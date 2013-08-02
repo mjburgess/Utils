@@ -78,14 +78,14 @@ div.body {
 			/* get information specific to this email */
 			$overview = imap_fetch_overview($inbox,$email_number,0);
 			
-			$body = imap_fetchbody($imap, $i, 1.1);
+			$body = imap_fetchbody($imap, $email_number, 1.1);
 			
 			if (!$body) {
-			    $body = imap_fetchbody($imap, $i, 1);
+			    $body = imap_fetchbody($imap, $email_number, 1);
 			}
 			
 			if (!$body) {
-			    $body = imap_fetchbody($imap, $i, 2);
+			    $body = imap_fetchbody($imap, $email_number, 2);
 			}
 			
 			$body = trim(substr(quoted_printable_decode($body), 0, 1000));
