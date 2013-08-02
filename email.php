@@ -23,10 +23,13 @@ function gmail_read($inbox, $email_number) {
 	if (!$body) {
 	    $body = imap_fetchbody($inbox, $email_number, 2);
 	}
-			
-	$body = trim(substr(quoted_printable_decode($body), 0, 1000));
-
+	
 	$overview[0]->body = $body;
-
-	return $overview[0];
+	$out = new stdClass;
+	
+	foreach($overview[0] as $key => $value) {
+		$out->$key = trim(substr(quoted_printable_decode($value), 0, 1000));
+	}	
+	
+	return $out;
 }
