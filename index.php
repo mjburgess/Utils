@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>GMail Reader</title>
-
+<script type="text/javascript" src="http://davidwalsh.name/demo/mootools-1.2.2.js"></script>
 <style type="text/css">
 div.toggler {
   border: 1px solid #ccc;
@@ -41,7 +41,6 @@ div.body {
         togglers[0].fireEvent('click'); //first one starts out read
     });
 </script>
-
 </head>
 <body>
 <?php if(empty($_POST['username'])) { ?>
@@ -98,5 +97,7 @@ div.body {
 	imap_close($inbox);
 }
 ?>
+
+
 </body>
 </html>
