@@ -1,4 +1,3 @@
-<?php ini_set('display_errors', 'On'); error_reporting(E_ALL); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,6 +96,7 @@ div.body {
 	
 	/* close the connection */
 	imap_close($inbox);
+}
 ?>
 </body>
 </html>
