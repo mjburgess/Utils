@@ -32,7 +32,7 @@
 	<h1>No Emails Today!</h3> 
 <?php endif; ?>
 
-<?php foreach($emails as $email_number): $email = gmail_read($inbox, $email_number);
+<?php foreach($emails as $email_number): $email = gmail_read($inbox, $email_number); ?>
 <h3><?php echo $email->subject; ?> <em>from, <?php echo $email->from; ?>, on <?php echo $email->date; ?></em></h3>
 <div><p>
 <?php echo $email->body; ?></p></div>
