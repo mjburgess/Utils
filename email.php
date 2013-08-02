@@ -1,9 +1,8 @@
 <?php
 
 function gmail_connect($username, $password) {
-  $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-
-	return imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
+  	$hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
+	return imap_open($hostname, $username, $password);
 }
 
 function gmail_today($inbox) {
