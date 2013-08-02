@@ -80,19 +80,16 @@ div.body {
 			
 
 			
-			//if (!$body) {
-			    $body = imap_fetchbody($inbox, $email_number, 1);
-			//}
-			echo '<!-- ' . $body . ' -->';
-			
-			//if (!$body) {
-			    $body = imap_fetchbody($inbox, $email_number, 2);
-			//}
-			echo '<!-- ' . $body . ' -->';
-			
 			$body = imap_fetchbody($inbox, $email_number, 1.1);
-			echo '<!-- ' . $body . ' -->';
 			
+			if (!$body) {
+			    $body = imap_fetchbody($inbox, $email_number, 1);
+			}
+						
+			if (!$body) {
+			    $body = imap_fetchbody($inbox, $email_number, 2);
+			}
+						
 			$body = trim(substr(quoted_printable_decode($body), 0, 1000));
 
 			
